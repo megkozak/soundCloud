@@ -24,16 +24,21 @@
     <!-- <source src="mp3/DpMfP6qUSBo.mp3" />
    <source src="mp3/DpMfP6qUSBo.mp3" /> -->
 
-
+<!--
+    You'll need to create a new script and attach it to the same object as the AudioSource. T
+    his script should contain a public array of AudioClips which you populate through the inspector.
+    In the playback logic in your script, you may load individual AudioClips
+    into the AudioSource component -->
 
     <audio id="player">
   	   <!-- <source src="music.ogg" /> -->
-   <source src="mp3/DpMfP6qUSBo.mp3">
+      <source src="mp3/DpMfP6qUSBo.mp3">
+    </audio>
 
-  	</audio>
 
     <button id="play" type="button" name="play">Play</button>
     <button id="pause" type="button" name="pause">Pause</button>
+    <button id="nextSong"  type="button" name="nextSong">Next Song</button>
 
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
