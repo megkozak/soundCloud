@@ -1,1 +1,24 @@
-body
+{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+body {
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    background: lightblue url("recordPlayer.jpg") no-repeat center fixed;
+}
+
+
+controls.buttons {
+    width: 90%;
+    display: block;
+    margin: 15px auto;
+    margin-left: 23px;
+    overflow: auto;
+}
