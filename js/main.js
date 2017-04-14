@@ -1,36 +1,8 @@
+$( document ).ready(function(){
+  $('#pause').prop('disabled', true);
+})
+
 SC.initialize({   client_id: 'fd4e76fc67798bfa742089ed619084a6' });
-
-// var tracks = [
-//     '/tracks/238277971',
-//     '/tracks/178747223',
-//     '/tracks/201564439',
-//     '/tracks/246726977'
-//   ];
-
-// var SoundCloud = {}
-// SC.stream().then(function(player){
-//   tracks.push(player);
-//   console.log(tracks);
-// });
-
-// SC.get("/tracks", function(response) {
-//   for (var i = 0; i < response.length; i++) {
-//     $("ul").append("<li>" + response[i].title + "</li>");
-//   }
-// });
-
-// for(var i=0;i <tracks.length; i++){
-//   SC.get(tracks[i]).then(function(response) {
-//     SoundCloud[response.id] = response;
-//   });
-// }
-//
-// for(var i=0;i <tracks.length; i++){
-//   SC.stream(tracks[i]).then(function(response) {
-//     console.log(response);
-//     trackAudio.push(response);
-//   });
-// }
 
 function JukeBox() {
   this.start = function() {
@@ -38,12 +10,29 @@ function JukeBox() {
   };
 
   this.play = function(trackID) {
-    var potato = this;
+
+    $('#pause').prop('disabled', false);
+    var track = this;
     SC.stream(this.songs()[trackID]).then(function(player) {
-      potato.player = player;
-      potato.player.play()
+      track.player = player;
+      track.player.play()
+      // console.log(track);
+      // console.log(player);
+
+      SC.get("/tracks/238277971").then(function(response) {
+        document.getElementsByTagName("body")[0].style.background = `lightblue url(${response.artwork_url}) no-repeat center fixed`;
+        document.getElementById("genre").innerText = response.genre;
+        console.log(response.id);
+        console.log(response.kind);
+        console.log(response.genre);
+        console.log(response.artwork_url);
+        console.log(response.uri);
+      });
+
     });
   };
+
+
   this.pause = function() {
       this.player.pause();
   };
@@ -52,14 +41,7 @@ function JukeBox() {
     var randomTrackID = Math.floor(Math.random() * this.songs().length);
     this.play(randomTrackID);
 
-    // SC.stream(randomTrackID).then(function() {
-    //   // random.player = player;
-    //   // random.player.play()
-    //   this.playSong(_.sample(this.songs()));
-    // });
   };
-    // this.playSong(_.sample(this.songs()));
-
 
   this.songs = function() {
     var result = [
@@ -68,30 +50,19 @@ function JukeBox() {
         '/tracks/201564439',
         '/tracks/246726977'
       ];
+    // console.log(result);
     return(result);
+
     };
   };
 
-  this.chooseSong = function(){
-    // var player = this.player();
-    // player.src = document.getElementById('songs').value;
-    // player.play();
+  // this.chooseSong = function(){
+  //   var player = this.player();
+  //   player.src = document.getElementById('songs').value;
+  //   player.play();
+  // };
 
-    this.playSong(document.getElementById('songs').value);
 
-    // var songDB = $("#song")
-    // console.log(songDB);
-    // console.log(choice);
-    // player.src = choice.target.value;
-    // console.log(document.getElementById('songs').value);
-  };
-
-  // here
-  this.playSong = function(src) {
-    var player = this.player();
-    player = trackID;
-    player.play();
-  };
 
 
 myJukeBox = new JukeBox();
