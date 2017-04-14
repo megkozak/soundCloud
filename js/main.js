@@ -21,16 +21,28 @@ function JukeBox() {
 
       SC.get("/tracks/238277971").then(function(response) {
         document.getElementsByTagName("body")[0].style.background = `lightblue url(${response.artwork_url}) no-repeat center fixed`;
+        // console.log(response);
+        // console.log(response.title);
+        // console.log(response.tag_list);
+        // console.log(response.genre);
+        // console.log(response.artwork_url);
+        // console.log(response.uri);
         document.getElementById("genre").innerText = response.genre;
-        console.log(response.id);
-        console.log(response.kind);
-        console.log(response.genre);
-        console.log(response.artwork_url);
-        console.log(response.uri);
+        document.getElementbyId("tag_list").innerText = response.tag_list;
+
       });
 
     });
   };
+
+  // Play a track off of SoundCloud based on its track ID
+  // Pause the currently playing track
+  // Display the following current track information:
+      // Artist name with link to his/her profile page
+      // Title with link to track's page
+      // Description and genre
+      // Artwork
+
 
 
   this.pause = function() {
