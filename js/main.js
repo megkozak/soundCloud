@@ -21,15 +21,15 @@ function JukeBox() {
 
       SC.get("/tracks/238277971").then(function(response) {
         document.getElementsByTagName("body")[0].style.background = `lightblue url(${response.artwork_url}) no-repeat center fixed`;
-        // console.log(response);
-        // console.log(response.title);
-        // console.log(response.tag_list);
-        // console.log(response.genre);
-        // console.log(response.artwork_url);
-        // console.log(response.uri);
         document.getElementById("genre").innerText = response.genre;
-        document.getElementbyId("tag_list").innerText = response.tag_list;
+        document.getElementById("title").innerText = response.tag_list;
 
+        console.log(response);
+        console.log(response.title);
+        console.log(response.tag_list);
+        console.log(response.genre);
+        console.log(response.artwork_url);
+        console.log(response.uri);
       });
 
     });
@@ -58,9 +58,9 @@ function JukeBox() {
   this.songs = function() {
     var result = [
         '/tracks/238277971',
-        '/tracks/178747223',
-        '/tracks/201564439',
-        '/tracks/246726977'
+        // '/tracks/178747223',
+        // '/tracks/201564439',
+        // '/tracks/246726977'
       ];
     // console.log(result);
     return(result);
@@ -91,6 +91,6 @@ $("#shuffle").click(function() {
   myJukeBox.shuffle();
 });
 
-$("#songs").change(event, function() {
-  myJukeBox.chooseSong();
-});
+// $("#songs").change(event, function() {
+//   myJukeBox.chooseSong();
+// });
