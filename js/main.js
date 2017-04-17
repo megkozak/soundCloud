@@ -1,8 +1,12 @@
 $( document ).ready(function(){
   $('#pause').prop('disabled', true);
-})
+});
 
-SC.initialize({   client_id: 'fd4e76fc67798bfa742089ed619084a6' });
+SC.initialize({
+  client_id: 'fd4e76fc67798bfa742089ed619084a6',
+  // redirect_uri: 'http://example.com/callback'});
+});
+
 
 function JukeBox() {
   this.start = function() {
@@ -23,18 +27,15 @@ function JukeBox() {
         document.getElementsByTagName("body")[0].style.background = `lightblue url(${response.artwork_url}) no-repeat center fixed`;
         document.getElementById("genre").innerText = response.genre;
         document.getElementById("title").innerText = response.tag_list;
+        document.getElementById("uri").innerText = response.uri;
+        // document.getElementsByTagName('body')[0].innerHTML += '<a href="'+desiredLink+'">'+desiredText+'</a>';
 
-        console.log(response);
-        console.log(response.title);
-        console.log(response.tag_list);
-        console.log(response.genre);
+
         console.log(response.artwork_url);
         console.log(response.uri);
+        });
       });
-
-    });
-  };
-
+    };
   // Play a track off of SoundCloud based on its track ID
   // Pause the currently playing track
   // Display the following current track information:
@@ -90,6 +91,10 @@ $("#pause").click(function() {
 $("#shuffle").click(function() {
   myJukeBox.shuffle();
 });
+
+
+
+
 
 // $("#songs").change(event, function() {
 //   myJukeBox.chooseSong();
